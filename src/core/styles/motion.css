@@ -1,0 +1,111 @@
+/* scroll reveal: pure CSS, off the main thread, resting state is always
+   opacity: 1 so nothing is ever stuck invisible without browser support or
+   with JS disabled - the @supports block is the only place opacity:0 exists */
+.reveal {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  /* scroll-linked, not time-based - there is no millisecond duration here,
+     the "length" of the animation is however much you scroll while the
+     item crosses this range. entry 0% to entry 100% is the item's whole
+     journey from first touching the viewport's bottom edge to being fully
+     inside it - the previous entry 10% cover 35% was a much narrower
+     window (and cover's 0-100% spans the item's ENTIRE time intersecting
+     the viewport, entry to exit, so "35%" there was earlier and shorter
+     than it reads at a glance), which a normal scroll speed crossed in a
+     handful of frames - barely perceptible, not broken. */
+  .reveal {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry;
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* the home palette lean: hovering or focusing a gate interpolates the shell
+   background toward that gate's theme before the visitor commits to it.
+   registered as <color> so the browser can interpolate them - a plain custom
+   property is not transition-able. scoped to :root, not per-component,
+   because :has() needs to see across the Home/Gates component boundary that
+   Vue's scoped CSS attribute selectors would otherwise break */
+@property --lean-a {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #191d22;
+}
+@property --lean-b {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1f1519;
+}
+@property --lean-c {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #26141a;
+}
+
+.home {
+  --lean-a: #191d22;
+  --lean-b: #1f1519;
+  --lean-c: #26141a;
+  background: linear-gradient(
+    100deg,
+    var(--lean-a) 0%,
+    var(--lean-a) 34%,
+    var(--lean-b) 64%,
+    var(--lean-c) 100%
+  );
+  /* deliberately --dur-lazy (900ms), not --dur-slow: the point of the lean is
+     for the visitor to actually perceive the background mutating toward the
+     hovered theme, not just see a flash before/after */
+  transition:
+    --lean-a var(--dur-lazy) var(--ease-default),
+    --lean-b var(--dur-lazy) var(--ease-default),
+    --lean-c var(--dur-lazy) var(--ease-default);
+}
+
+.home:has(.gate-code:hover, .gate-code:focus-visible) {
+  --lean-a: #14161a;
+  --lean-b: #171a1e;
+  --lean-c: #1b1d21;
+}
+
+.home:has(.gate-frame:hover, .gate-frame:focus-visible) {
+  --lean-a: #1f1216;
+  --lean-b: #2a151b;
+  --lean-c: #3a1e25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* the route-to-route temperature shift: a plain cross-fade of the whole page
+   snapshot, which is what the View Transitions API gives you by default -
+   this just tunes the duration. useThemeTransition.ts skips calling
+   startViewTransition() entirely under prefers-reduced-motion, so this
+   reduced-motion override is defense in depth, not the primary guard. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+  }
+}

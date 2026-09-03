@@ -1,0 +1,48 @@
+{
+  "name": "raneves",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-ssg build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "oxlint src && eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "boundaries": "depcruise src --config .dependency-cruiser.cjs",
+    "check-contrast": "tsx scripts/check-contrast.ts",
+    "size": "size-limit",
+    "check": "pnpm type-check && pnpm lint && pnpm boundaries && pnpm check-contrast && pnpm build && pnpm size"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^5.0.0",
+    "vue-i18n": "^11.0.0",
+    "@unhead/vue": "^2.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@types/node": "^22.0.0",
+    "dependency-cruiser": "^18.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "oxlint": "^1.0.0",
+    "prettier": "^3.0.0",
+    "sharp": "^0.33.0",
+    "size-limit": "^13.0.0",
+    "@size-limit/file": "^13.0.0",
+    "svgo": "^4.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^8.0.0",
+    "vite-ssg": "^28.0.0",
+    "vue-tsc": "^3.0.0"
+  }
+}

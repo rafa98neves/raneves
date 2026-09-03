@@ -1,0 +1,4 @@
+dist
+.vite-ssg-temp
+pnpm-lock.yaml
+ai/

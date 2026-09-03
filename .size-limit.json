@@ -1,0 +1,50 @@
+[
+  {
+    "name": "/ (home) - JS",
+    "path": [
+      "dist/assets/app-*.js",
+      "dist/assets/HomeView-*.js",
+      "dist/assets/SocialLinks-*.js",
+      "dist/assets/PageFooter-*.js",
+      "dist/assets/useTypewriter-*.js"
+    ],
+    "limit": "80 KB",
+    "gzip": true
+  },
+  {
+    "name": "/ (home) - CSS",
+    "path": [
+      "dist/assets/app-*.css",
+      "dist/assets/HomeView-*.css",
+      "dist/assets/SocialLinks-*.css",
+      "dist/assets/PageFooter-*.css",
+      "dist/assets/useTypewriter-*.css"
+    ],
+    "limit": "8 KB",
+    "gzip": true
+  },
+  {
+    "name": "/code - JS (route-only)",
+    "path": ["dist/assets/CodeView-*.js", "dist/assets/CaseStudyView-*.js"],
+    "limit": "8 KB",
+    "gzip": true
+  },
+  {
+    "name": "/code - CSS (route-only)",
+    "path": ["dist/assets/CodeView-*.css", "dist/assets/CaseStudyView-*.css"],
+    "limit": "4 KB",
+    "gzip": true
+  },
+  {
+    "name": "/frame - JS (route-only)",
+    "path": "dist/assets/FrameView-*.js",
+    "limit": "6 KB",
+    "gzip": true
+  },
+  {
+    "name": "/frame - CSS (route-only)",
+    "path": "dist/assets/FrameView-*.css",
+    "limit": "4 KB",
+    "gzip": true
+  }
+]

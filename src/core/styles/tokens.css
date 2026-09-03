@@ -1,0 +1,60 @@
+:root {
+  /* type - fluid 390px -> 1440px viewport */
+  --text-2xs: 0.6875rem;
+  --text-xs: clamp(0.75rem, 0.727rem + 0.1vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.852rem + 0.1vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.954rem + 0.19vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.032rem + 0.38vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.236rem + 0.57vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.471rem + 1.14vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.74rem + 2.1vw, 3.625rem);
+  --text-4xl: clamp(3rem, 2.071rem + 3.81vw, 5.5rem);
+  --display-1: clamp(3.5rem, 1.271rem + 9.14vw, 9.5rem);
+
+  /* the three art-directed scale steps used across home/engineering/frame */
+  --text-hero: clamp(3rem, 1.5rem + 7vw, 9.25rem); /* home name, ~148px at desktop */
+  --leading-hero: 0.86;
+  --track-hero: -0.045em;
+
+  /* floor lowered from 2.5rem: at mobile widths the old floor (40px) was
+     hit regardless of viewport, and some row titles are full phrases
+     ("Bachelor's in Informatics Engineering"), not just short company
+     names - at 40px those wrapped to 4-5 lines each and made the whole
+     timeline enormous on a phone. coefficient raised to compensate so
+     desktop sizing is close to before. */
+  --text-row: clamp(1.625rem, 1rem + 4.5vw, 6rem); /* 96px company/series titles */
+  --leading-row: 0.92;
+  --track-row: -0.05em;
+
+  --text-statement: clamp(1.75rem, 1.4rem + 1.6vw, 3.875rem); /* 62px opening sentence */
+  --leading-statement: 1.1;
+  --track-statement: -0.032em;
+
+  --leading-body: 1.6;
+  --track-label: 0.18em;
+  --measure: 40rem;
+
+  /* spacing - 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --gutter: 5rem;
+  --gutter-home: 4.5rem;
+
+  /* motion - overridden per theme below */
+  --dur-instant: 90ms;
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+  --dur-lazy: 900ms; /* deliberately slow - used where the motion itself is the point */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}

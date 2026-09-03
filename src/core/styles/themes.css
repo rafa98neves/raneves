@@ -1,0 +1,85 @@
+/* :root fallback so anything relying on ordinary inheritance (body's own
+   `color: var(--fg)` in reset.css, for one) still resolves before a
+   [data-theme] container is reached - custom properties do not cascade
+   upward, so without this, body sees an invalid var and falls back to black.
+   Mirrors the "ink" theme; [data-theme="X"] blocks below override it. */
+:root {
+  --bg-0: #191d22;
+  --bg-0-rgb: 25, 29, 34;
+  --bg-1: #1f1519;
+  --bg-2: #26141a;
+  --fg: #f4f3f0;
+  --fg-muted: #b9b9c0;
+  --fg-subtle: #8e8e97;
+  --accent: #d8b26a;
+  --border-subtle: rgba(244, 243, 240, 0.16);
+  --focus: #e3c285;
+  --focus-halo: #0b0b0d;
+}
+
+/* home shell: neutral, drifting warm across the gradient */
+[data-theme="ink"] {
+  --bg-0: #191d22;
+  --bg-0-rgb: 25, 29, 34; /* same color as --bg-0, as r,g,b for rgba() blends */
+  --bg-1: #1f1519;
+  --bg-2: #26141a;
+  --fg: #f4f3f0;
+  --fg-muted: #b9b9c0;
+  --fg-subtle: #8e8e97;
+  --fg-sep: #7a7a83;
+  --accent: #d8b26a;
+  --border-subtle: rgba(244, 243, 240, 0.16);
+  --focus: #e3c285;
+  --focus-halo: #0b0b0d;
+  --r-sm: 3px;
+  --r-md: 6px;
+  --r-lg: 14px;
+  --dur-base: 240ms;
+  --ease-default: var(--ease-out-expo);
+}
+
+/* Engineering: cool dark grey */
+[data-theme="steel"] {
+  --bg-0: #17181b;
+  --bg-0-rgb: 23, 24, 27; /* same color as --bg-0, as r,g,b for rgba() blends */
+  --bg-1: #1b1d21;
+  --bg-2: #24262b;
+  --fg: #f4f3f0;
+  --fg-muted: #b0b0b8;
+  --fg-subtle: #949aa3;
+  --accent: #d8b26a;
+  --border-subtle: rgba(244, 243, 240, 0.14);
+  --focus: #e3c285;
+  --focus-halo: #0b0b0d;
+  --r-sm: 1px;
+  --r-md: 2px;
+  --r-lg: 4px;
+  --dur-base: 190ms;
+  --ease-default: var(--ease-out-expo);
+}
+
+/* Frame: dark maroon. Pushed redder than a first pass (was #140a0d etc) -
+   at very low luminance the eye loses most hue discrimination, so a
+   near-black with only a slight warm bias just reads as "black", not "red".
+   Re-verified against AA after the shift - see scripts/check-contrast.ts */
+[data-theme="velvet"] {
+  --bg-0: #1a0709;
+  --bg-0-rgb: 26, 7, 9; /* same color as --bg-0, as r,g,b for rgba() blends */
+  --bg-1: #260a0e;
+  --bg-2: #380f16;
+  --bg-3: #4c1520;
+  --maroon: #6b2231;
+  --maroon-rgb: 107, 34, 49; /* same color as --maroon, as r,g,b for rgba() washes */
+  --fg: #f5ede9;
+  --fg-muted: #c7b0b2;
+  --fg-subtle: #b49a9e;
+  --accent: #e7b573;
+  --border-subtle: rgba(245, 237, 233, 0.14);
+  --focus: #f0c68c;
+  --focus-halo: #1a0709;
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --dur-base: 320ms;
+  --ease-default: var(--ease-out-quart);
+}
