@@ -21,6 +21,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
+      # GitHub Pages serves a plain 404 for any path with no matching static
+      # file - only known prerendered routes have one. Serving index.html
+      # instead boots the app, whose own router/locale.ts catch-all then
+      # redirects to / or /pt client-side.
+      - run: cp dist/index.html dist/404.html
+
       - name: Publish to rafa98neves.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:

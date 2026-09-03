@@ -175,7 +175,7 @@ const nameWords = computed(() => profile.value.name.split(" "))
   top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(1400px, 80vw);
+  width: min(1200px, 60vw);
   height: auto;
   max-height: 95vh;
   object-fit: contain;

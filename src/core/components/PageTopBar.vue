@@ -84,8 +84,8 @@ const { other, otherPath } = useLocaleSwitch()
   gap: var(--space-2);
   padding: var(--space-5) var(--gutter);
   background: rgba(var(--bg-0-rgb), 0.85);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .back {

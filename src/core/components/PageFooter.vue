@@ -45,8 +45,8 @@ const year = new Date().getFullYear()
   padding: var(--space-4) var(--gutter);
   border-top: 1px solid var(--border-subtle);
   background: rgba(var(--bg-0-rgb), 0.85);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

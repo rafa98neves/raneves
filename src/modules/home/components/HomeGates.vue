@@ -50,8 +50,8 @@ const nav = useNav()
   border-radius: var(--r-md);
   text-decoration: none;
   color: var(--fg);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   transition: background-color var(--dur-base) var(--ease-default);
 }
 
